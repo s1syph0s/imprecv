@@ -118,7 +118,7 @@
     ]
 }
 
-#let cvwork(info, title: "Arbeitserfahrung", isbreakable: true) = {
+#let cvwork(info, title: "Arbeitserfahrungen", isbreakable: true) = {
     if info.work != none {block[
         == #title
         #for w in info.work {
@@ -152,7 +152,7 @@
     ]}
 }
 
-#let cveducation(info, title: "Ausbildung", isbreakable: true) = {
+#let cveducation(info, title: "Ausbildungen", isbreakable: true) = {
     if info.education != none {block[
         == #title
         #for edu in info.education {
