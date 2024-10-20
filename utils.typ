@@ -36,7 +36,7 @@
         date = datetime(year: year, month: month, day: day)
         date = monthName + " " + date.display("[year repr:full]")
     } else if lower(isodate) == "present" {
-        date = "Present"
+        date = "Heute"
     }
     return date
 }
