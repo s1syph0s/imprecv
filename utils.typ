@@ -3,18 +3,18 @@
     n = int(n)
     let month = ""
 
-    if n == 1 { month = "January" }
-    else if n == 3 { month = "March" }
-    else if n == 2 { month = "February" }
+    if n == 1 { month = "Januar" }
+    else if n == 3 { month = "März" }
+    else if n == 2 { month = "Februar" }
     else if n == 4 { month = "April" }
-    else if n == 5 { month = "May" }
-    else if n == 6 { month = "June" }
-    else if n == 7 { month = "July" }
+    else if n == 5 { month = "Mai" }
+    else if n == 6 { month = "Juni" }
+    else if n == 7 { month = "Juli" }
     else if n == 8 { month = "August" }
     else if n == 9 { month = "September" }
-    else if n == 10 { month = "October" }
+    else if n == 10 { month = "Oktober" }
     else if n == 11 { month = "November" }
-    else if n == 12 { month = "December" }
+    else if n == 12 { month = "Dezember" }
     else { month = none }
     if month != none {
         if display == "short" {

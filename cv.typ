@@ -118,7 +118,7 @@
     ]
 }
 
-#let cvwork(info, title: "Work Experience", isbreakable: true) = {
+#let cvwork(info, title: "Arbeitserfahrung", isbreakable: true) = {
     if info.work != none {block[
         == #title
         #for w in info.work {
@@ -152,7 +152,7 @@
     ]}
 }
 
-#let cveducation(info, title: "Education", isbreakable: true) = {
+#let cveducation(info, title: "Ausbildung", isbreakable: true) = {
     if info.education != none {block[
         == #title
         #for edu in info.education {
@@ -160,8 +160,8 @@
             let end = utils.strpdate(edu.endDate)
 
             let edu-items = ""
-            if edu.honors != none {edu-items = edu-items + "- *Honors*: " + edu.honors.join(", ") + "\n"}
-            if edu.courses != none {edu-items = edu-items + "- *Courses*: " + edu.courses.join(", ") + "\n"}
+            if edu.honors != none {edu-items = edu-items + "- *Auszeichnungen*: " + edu.honors.join(", ") + "\n"}
+            if edu.courses != none {edu-items = edu-items + "- *Kurse*: " + edu.courses.join(", ") + "\n"}
             if edu.highlights != none {
                 for hi in edu.highlights {
                     edu-items = edu-items + "- " + hi + "\n"
@@ -186,7 +186,7 @@
     ]}
 }
 
-#let cvaffiliations(info, title: "Leadership and Activities", isbreakable: true) = {
+#let cvaffiliations(info, title: "Organisationen", isbreakable: true) = {
     if info.affiliations != none {block[
         == #title
         #for org in info.affiliations {
@@ -216,13 +216,11 @@
     ]}
 }
 
-#let cvprojects(info, title: "Projects", isbreakable: true) = {
+#let cvprojects(info, title: "Projekte", isbreakable: true) = {
     if info.projects != none {block[
         == #title
         #for project in info.projects {
             // Parse ISO date strings into datetime objects
-            let start = utils.strpdate(project.startDate)
-            let end = utils.strpdate(project.endDate)
             // Create a block layout for each project entry
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Project Name
@@ -232,7 +230,7 @@
                     *#project.name* \
                 ]
                 // Line 2: Organization and Date
-                #text(style: "italic")[#project.affiliation]  #h(1fr) #utils.daterange(start, end) \
+                #text(style: "italic")[#project.affiliation]  #h(1fr) \
                 // Summary or Description
                 #for hi in project.highlights [
                     - #eval(hi, mode: "markup")
@@ -242,7 +240,7 @@
     ]}
 }
 
-#let cvawards(info, title: "Honors and Awards", isbreakable: true) = {
+#let cvawards(info, title: "Auszeichnungen", isbreakable: true) = {
     if info.awards != none {block[
         == #title
         #for award in info.awards {
@@ -257,7 +255,7 @@
                     *#award.title* #h(1fr) *#award.location* \
                 ]
                 // Line 2: Issuer and Date
-                Issued by #text(style: "italic")[#award.issuer]  #h(1fr) #date \
+                Herausgegeben von #text(style: "italic")[#award.issuer]  #h(1fr) #date \
                 // Summary or Description
                 #if award.highlights != none {
                     for hi in award.highlights [
@@ -269,7 +267,7 @@
     ]}
 }
 
-#let cvcertificates(info, title: "Licenses and Certifications", isbreakable: true) = {
+#let cvcertificates(info, title: "Zertifizierungen", isbreakable: true) = {
     if info.certificates != none {block[
         == #title
 
@@ -289,13 +287,13 @@
                 ]
                 \
                 // Line 2: Issuer and Date
-                Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #date \
+                Herausgegeben von #text(style: "italic")[#cert.issuer]  #h(1fr) #date \
             ]
         }
     ]}
 }
 
-#let cvpublications(info, title: "Research and Publications", isbreakable: true) = {
+#let cvpublications(info, title: "Forschungen und Publikationen", isbreakable: true) = {
     if info.publications != none {block[
         == #title
         #for pub in info.publications {
@@ -311,7 +309,7 @@
                 ]
                 // Line 2: Publisher and Date
                 #if pub.publisher != none [
-                    Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #date \
+                    Veröffentlicht auf #text(style: "italic")[#pub.publisher]  #h(1fr) #date \
                 ] else [
                     In press \
                 ]
@@ -320,7 +318,7 @@
     ]}
 }
 
-#let cvskills(info, title: "Skills, Languages, Interests", isbreakable: true) = {
+#let cvskills(info, title: "Sprachen, Kenntnissen, Interessen", isbreakable: true) = {
     if (info.languages != none) or (info.skills != none) or (info.interests != none) {block(breakable: isbreakable)[
         == #title
         #if (info.languages != none) [
@@ -328,7 +326,7 @@
             #for lang in info.languages {
                 langs.push([#lang.language (#lang.fluency)])
             }
-            - *Languages*: #langs.join(", ")
+            - *Sprachen*: #langs.join(", ")
         ]
         #if (info.skills != none) [
             #for group in info.skills [
@@ -336,12 +334,12 @@
             ]
         ]
         #if (info.interests != none) [
-            - *Interests*: #info.interests.join(", ")
+            - *Interessen*: #info.interests.join(", ")
         ]
     ]}
 }
 
-#let cvreferences(info, title: "References", isbreakable: true) = {
+#let cvreferences(info, title: "Referenzen", isbreakable: true) = {
     if info.references != none {block[
         == #title
         #for ref in info.references {
